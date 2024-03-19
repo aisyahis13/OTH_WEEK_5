@@ -1,0 +1,42 @@
+#include <stdio.h> 
+
+int isValid(int a, int b) { //
+    return (a >= 0 && a < 8 && b >= 0 && b < 8);
+}
+
+void koboImaginaryChess(int i, int j, int size, int *papanCatur) {
+    int switchA[] = {2, 1, -1, -2, -2, -1, 1, 2};
+    int switchB[] = {1, 2, 2, 1, -1, -2, -2, -1};
+
+    for (int k = 0; k < 8; k++) {
+        int nextA = i + switchA[k];
+        int nextB = j + switchB[k];
+        if (isValid(nextA, nextB)) {
+            *(papanCatur + nextA * size + nextB) = 1; 
+        }
+    }
+}
+
+int main() {
+    int i, j;
+    scanf("%d %d", &i, &j); 
+
+    int size = 8; 
+    int papanCatur[size][size]; 
+
+        for (int b = 0; b < size; b++) {
+            papanCatur[a][b] = 0;
+        }
+    }
+
+    koboImaginaryChess(i, j, size, (int *)papanCatur); 
+
+    for (int a = 0; a < size; a++) {
+        for (int b = 0; b < size; b++) {
+            printf("%d ", papanCatur[a][b]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
